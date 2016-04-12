@@ -1,1 +1,3 @@
-.printButtonClass{ display : none }
+  @media print {
+    div.do-not-print {display: none;}
+}
