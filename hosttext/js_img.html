@@ -1,0 +1,114 @@
+<!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #00cd00">function</span> <span style="color: #cccccc">resizeCanvasImage(img,</span> <span style="color: #cccccc">canvas,</span> <span style="color: #cccccc">maxWidth,</span> <span style="color: #cccccc">maxHeight)</span> <span style="color: #cccccc">{</span>
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">imgWidth</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">img.width,</span> 
+        <span style="color: #cccccc">imgHeight</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">img.height;</span>
+
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">ratio</span> <span style="color: #3399cc">=</span> <span style="color: #cd00cd">1</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">ratio1</span> <span style="color: #3399cc">=</span> <span style="color: #cd00cd">1</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">ratio2</span> <span style="color: #3399cc">=</span> <span style="color: #cd00cd">1</span><span style="color: #cccccc">;</span>
+    <span style="color: #cccccc">ratio1</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">maxWidth</span> <span style="color: #3399cc">/</span> <span style="color: #cccccc">imgWidth;</span>
+    <span style="color: #cccccc">ratio2</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">maxHeight</span> <span style="color: #3399cc">/</span> <span style="color: #cccccc">imgHeight;</span>
+
+    <span style="color: #000080">// Use the smallest ratio that the image best fit into the maxWidth x maxHeight box.</span>
+    <span style="color: #cdcd00">if</span> <span style="color: #cccccc">(ratio1</span> <span style="color: #3399cc">&lt;</span> <span style="color: #cccccc">ratio2)</span> <span style="color: #cccccc">{</span>
+        <span style="color: #cccccc">ratio</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">ratio1;</span>
+    <span style="color: #cccccc">}</span>
+    <span style="color: #cdcd00">else</span> <span style="color: #cccccc">{</span>
+        <span style="color: #cccccc">ratio</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">ratio2;</span>
+    <span style="color: #cccccc">}</span>
+
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">canvasContext</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">canvas.getContext(</span><span style="color: #cd0000">&quot;2d&quot;</span><span style="color: #cccccc">);</span>
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">canvasCopy</span> <span style="color: #3399cc">=</span> <span style="color: #cd00cd">document</span><span style="color: #cccccc">.createElement(</span><span style="color: #cd0000">&quot;canvas&quot;</span><span style="color: #cccccc">);</span>
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">copyContext</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">canvasCopy.getContext(</span><span style="color: #cd0000">&quot;2d&quot;</span><span style="color: #cccccc">);</span>
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">canvasCopy2</span> <span style="color: #3399cc">=</span> <span style="color: #cd00cd">document</span><span style="color: #cccccc">.createElement(</span><span style="color: #cd0000">&quot;canvas&quot;</span><span style="color: #cccccc">);</span>
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">copyContext2</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">canvasCopy2.getContext(</span><span style="color: #cd0000">&quot;2d&quot;</span><span style="color: #cccccc">);</span>
+    <span style="color: #cccccc">canvasCopy.width</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgWidth;</span>
+    <span style="color: #cccccc">canvasCopy.height</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgHeight;</span>  
+    <span style="color: #cccccc">copyContext.drawImage(img,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">);</span>
+
+    <span style="color: #000080">// init</span>
+    <span style="color: #cccccc">canvasCopy2.width</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgWidth;</span>
+    <span style="color: #cccccc">canvasCopy2.height</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgHeight;</span>        
+    <span style="color: #cccccc">copyContext2.drawImage(canvasCopy,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">canvasCopy.width,</span> <span style="color: #cccccc">canvasCopy.height,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">canvasCopy2.width,</span> <span style="color: #cccccc">canvasCopy2.height);</span>
+
+
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">rounds</span> <span style="color: #3399cc">=</span> <span style="color: #cd00cd">2</span><span style="color: #cccccc">;</span>
+    <span style="color: #00cd00">var</span> <span style="color: #cccccc">roundRatio</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">ratio</span> <span style="color: #3399cc">*</span> <span style="color: #cccccc">rounds;</span>
+    <span style="color: #cdcd00">for</span> <span style="color: #cccccc">(</span><span style="color: #00cd00">var</span> <span style="color: #cccccc">i</span> <span style="color: #3399cc">=</span> <span style="color: #cd00cd">1</span><span style="color: #cccccc">;</span> <span style="color: #cccccc">i</span> <span style="color: #3399cc">&lt;=</span> <span style="color: #cccccc">rounds;</span> <span style="color: #cccccc">i</span><span style="color: #3399cc">++</span><span style="color: #cccccc">)</span> <span style="color: #cccccc">{</span>
+        <span style="color: #cccccc">console.log(</span><span style="color: #cd0000">&quot;Step: &quot;</span><span style="color: #3399cc">+</span><span style="color: #cccccc">i);</span>
+
+        <span style="color: #000080">// tmp</span>
+        <span style="color: #cccccc">canvasCopy.width</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgWidth</span> <span style="color: #3399cc">*</span> <span style="color: #cccccc">roundRatio</span> <span style="color: #3399cc">/</span> <span style="color: #cccccc">i;</span>
+        <span style="color: #cccccc">canvasCopy.height</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgHeight</span> <span style="color: #3399cc">*</span> <span style="color: #cccccc">roundRatio</span> <span style="color: #3399cc">/</span> <span style="color: #cccccc">i;</span>
+
+        <span style="color: #cccccc">copyContext.drawImage(canvasCopy2,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">canvasCopy2.width,</span> <span style="color: #cccccc">canvasCopy2.height,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">canvasCopy.width,</span> <span style="color: #cccccc">canvasCopy.height);</span>
+
+        <span style="color: #000080">// copy back</span>
+        <span style="color: #cccccc">canvasCopy2.width</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgWidth</span> <span style="color: #3399cc">*</span> <span style="color: #cccccc">roundRatio</span> <span style="color: #3399cc">/</span> <span style="color: #cccccc">i;</span>
+        <span style="color: #cccccc">canvasCopy2.height</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgHeight</span> <span style="color: #3399cc">*</span> <span style="color: #cccccc">roundRatio</span> <span style="color: #3399cc">/</span> <span style="color: #cccccc">i;</span>
+        <span style="color: #cccccc">copyContext2.drawImage(canvasCopy,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">canvasCopy.width,</span> <span style="color: #cccccc">canvasCopy.height,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">canvasCopy2.width,</span> <span style="color: #cccccc">canvasCopy2.height);</span>
+
+    <span style="color: #cccccc">}</span> <span style="color: #000080">// end for</span>
+
+
+    <span style="color: #000080">// copy back to canvas</span>
+    <span style="color: #cccccc">canvas.width</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgWidth</span> <span style="color: #3399cc">*</span> <span style="color: #cccccc">roundRatio</span> <span style="color: #3399cc">/</span> <span style="color: #cccccc">rounds;</span>
+    <span style="color: #cccccc">canvas.height</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">imgHeight</span> <span style="color: #3399cc">*</span> <span style="color: #cccccc">roundRatio</span> <span style="color: #3399cc">/</span> <span style="color: #cccccc">rounds;</span>
+    <span style="color: #cccccc">canvasContext.drawImage(canvasCopy2,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">canvasCopy2.width,</span> <span style="color: #cccccc">canvasCopy2.height,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">0</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">canvas.width,</span> <span style="color: #cccccc">canvas.height);</span>
+
+
+<span style="color: #cccccc">}</span>
+</pre></td></tr></table></div>
